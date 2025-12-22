@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: Dec 21, 2025 at 05:17 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Dec 22, 2025 at 10:16 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -251,7 +251,10 @@ INSERT INTO `roadmaps` (`roadmap_id`, `user_id`, `current_level_id`, `current_st
 (98, 1, 37, NULL, 27, '2025-12-21 07:49:19'),
 (99, 1, 1, NULL, 1, '2025-12-21 09:21:47'),
 (100, 1, 1, NULL, 5, '2025-12-21 09:24:16'),
-(101, 1, 3, NULL, 31, '2025-12-21 09:25:07');
+(101, 1, 3, NULL, 31, '2025-12-21 09:25:07'),
+(102, 1, 9, NULL, 3, '2025-12-22 06:51:58'),
+(103, 1, 1, NULL, 3, '2025-12-22 07:15:41'),
+(104, 1, 9, NULL, 3, '2025-12-22 08:09:15');
 
 -- --------------------------------------------------------
 
@@ -299,7 +302,14 @@ INSERT INTO `roadmap_steps` (`step_id`, `roadmap_id`, `step_order`, `education_s
 (337, 101, 1, 'BBA', NULL, NULL, 'education'),
 (338, 101, 2, NULL, NULL, 'CAT', 'exam'),
 (339, 101, 3, 'MBA', NULL, NULL, 'education'),
-(340, 101, 4, NULL, 'Management Consultant', NULL, 'job');
+(340, 101, 4, NULL, 'Management Consultant', NULL, 'job'),
+(341, 102, 1, 'ITI', NULL, NULL, 'education'),
+(342, 102, 2, NULL, 'ITI Technician', NULL, 'education'),
+(343, 103, 1, 'ITI', NULL, NULL, 'education'),
+(344, 103, 2, NULL, NULL, 'ITI Entrance Exam', 'exam'),
+(345, 103, 3, NULL, 'ITI Technician', NULL, 'job'),
+(346, 104, 1, 'ITI', NULL, NULL, 'education'),
+(347, 104, 2, NULL, 'ITI Technician', NULL, 'education');
 
 -- --------------------------------------------------------
 
@@ -321,12 +331,12 @@ CREATE TABLE `streams` (
 --
 
 INSERT INTO `streams` (`stream_id`, `level_id`, `stream_name`, `description`, `duration`, `future_scope`) VALUES
-(1, 1, '12th Science', 'Science stream with PCM/PCB', '2 Years', 'Engineering, Medicine, Research'),
-(2, 1, 'Diploma Engineering', 'Technical diploma after 10th', '3 Years', 'Lateral entry to B.Tech'),
+(1, 1, 'Science(12th-PCM-PCB)', 'Science stream with PCM or PCB', '2 Years', 'Engineering, Medicine, Research'),
+(2, 1, 'Diploma Engineering', 'Technical diploma after 10th (private or government colleges)\r\n', '3 Years', 'Lateral entry to B.Tech'),
 (3, 2, 'Engineering', 'B.Tech Engineering degree', '4 Years', 'IT, Core, PSU jobs'),
 (4, 2, 'Medicine', 'MBBS degree', '5.5 Years', 'Doctor, Specialist'),
-(6, 1, '12th Commerce', 'Commerce with Accounts, Business', '2 Years', 'CA, BBA, MBA, Finance'),
-(7, 1, '12th Arts', 'Arts and Humanities stream', '2 Years', 'Civil services, Law, Design'),
+(6, 1, 'Commerce (12th)\r\n', 'Commerce with Accounts, Business', '2 Years', 'CA, BBA, MBA, Finance'),
+(7, 1, 'Arts (12th)\r\n', 'Arts and Humanities stream', '2 Years', 'Civil services, Law, Design'),
 (9, 1, 'ITI', 'Industrial Training Institute courses', '1–2 Years', 'Technical & trade jobs'),
 (10, 2, 'Pure Science (B.Sc)', 'Physics, Chemistry, Maths, Biology', '3 Years', 'Research, Teaching'),
 (11, 2, 'Architecture (B.Arch)', 'Architecture and design', '5 Years', 'Architect'),
@@ -335,7 +345,7 @@ INSERT INTO `streams` (`stream_id`, `level_id`, `stream_name`, `description`, `d
 (14, 3, 'BBA', 'Business Administration', '3 Years', 'Management, MBA'),
 (15, 3, 'CA', 'Chartered Accountancy', '4–5 Years', 'Auditing, Finance'),
 (16, 3, 'CS', 'Company Secretary', '3–4 Years', 'Corporate Law'),
-(17, 1, 'Polytechnic Diploma', 'Applied technical diploma', '3 Years', 'Industry & lateral entry'),
+(17, 1, 'Polytechnic Diploma', 'State board technical diploma with lateral entry eligibility\r\n', '3 Years', 'Industry & lateral entry'),
 (18, 1, 'Vocational Courses', 'Skill-based vocational education', '1–2 Years', 'Employment & entrepreneurship'),
 (19, 7, 'PhD', 'Doctoral research', '3–5 Years', 'Academia, R&D'),
 (20, 7, 'Postdoctoral Research', 'Advanced research', '2–3 Years', 'Research scientist'),
@@ -573,8 +583,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `created_at`, `auth_token`) VALUES
-(1, 'Test User', 'testuser@gmail.com', '$2y$10$z3JDPyPo3lBF.nPwwY.waOW/UQNKUW57q7wkwMi1GoTHsHxL7vn3K', '2025-12-20 13:10:04', NULL),
-(2, 'Test User', 'test@gmail.com', '$2y$10$IgajxScaQAknoquXeXRvjev3jYe.BR.1ZbhDQ6K5UADvnFjVSp2QC', '2025-12-21 10:36:51', '03ab097b83e5f7680d31a3008101363897e7df31db22acf7eea4723c57f0f10f');
+(1, 'Test User', 'testuser@gmail.com', '12345', '2025-12-20 13:10:04', NULL),
+(2, 'Test User', 'test@gmail.com', '$2y$10$IgajxScaQAknoquXeXRvjev3jYe.BR.1ZbhDQ6K5UADvnFjVSp2QC', '2025-12-21 10:36:51', '03ab097b83e5f7680d31a3008101363897e7df31db22acf7eea4723c57f0f10f'),
+(3, 'Test User', 'user@gmail.com', '112233', '2025-12-22 04:35:06', '5f0c40476c9262d303c72bbe8cbe1f6ad69e05284b03e2b8270c2605721ad22e'),
+(5, 'User', 'usertest@gmail.com', '$2y$10$A91CfjPJ8d512/a/1zVxKOFmlwdquBtXYnuHF3XJ4nMHv0OVsxSiq', '2025-12-22 05:09:25', NULL),
+(6, 'Student', 'student@gmail.com', '$2y$10$uSBVOBEWabgnhkvA09Uck.JeZE/MLRSczadOhWe9UQtiA2bYb3iie', '2025-12-22 06:44:43', NULL),
+(7, 'Stud', 'stud@gmail.com', '$2y$10$TMI1LzyEOE.tqP6cVaS2yuH.Z9WoItE/sN5lr4OW9NVjJiLV41vx2', '2025-12-22 07:45:49', '08531ac9d112b1e62fd07f87d8eb7f98f60d28b90cc8f084c26e8f982fb07b07');
 
 --
 -- Indexes for dumped tables
@@ -701,13 +715,13 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `roadmaps`
 --
 ALTER TABLE `roadmaps`
-  MODIFY `roadmap_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `roadmap_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `roadmap_steps`
 --
 ALTER TABLE `roadmap_steps`
-  MODIFY `step_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `step_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `streams`
@@ -737,7 +751,7 @@ ALTER TABLE `stream_progression`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
